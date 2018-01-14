@@ -28,8 +28,11 @@ export default class Login extends Component {
 
   login = e => {
     e.preventDefault()
+    let username = e.target.elements.username.value
+    let password = e.target.elements.password.value
+
     auth
-      .signInWithEmailAndPassword('crap@crap.com', 'crapcrap')
+      .signInWithEmailAndPassword(username, password)
       .then(result => {
         const user = result.user
         this.setState(
@@ -62,31 +65,28 @@ export default class Login extends Component {
             Back
           </Link>
         </div>
-        <h1>Login</h1>
+        <h1>{this.state.user ? `Hi, ${this.state.user.email}` : 'Login'}</h1>
         <div>
           {this.state.user ? (
             <div>
               <button className="button" onClick={this.logout}>
                 Log Out
               </button>
-              <Link className="button" to="/">
-                Back
-              </Link>
             </div>
           ) : (
             <form onSubmit={this.login}>
               <label>
                 Username:{` `}
-                <input type="text" />
+                <input name="username" type="text" />
               </label>
               <label>
                 Password: {` `}
-                <input type="password" />
+                <input name="password" type="password" />
               </label>
               {this.state.error && (
                 <span className="error">{this.state.error}</span>
               )}
-              <button type="submit" className="button" onClick={this.login}>
+              <button type="submit" className="button">
                 Log In
               </button>
             </form>
