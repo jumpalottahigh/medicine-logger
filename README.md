@@ -1,5 +1,9 @@
 # Medicine Logger
 
+Track alternating fever medicine for babies.
+
+![App Screenshot](medicine-logger.png)
+
 ## Social Links
 
 * [www.georgi-yanev.com](https://www.georgi-yanev.com)
